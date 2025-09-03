@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { 
   SiPython, SiTensorflow, SiPandas
 } from 'react-icons/si';
-import { BiData, BiBarChartAlt2, BiWindow, BiSpreadsheet } from 'react-icons/bi';
+import { BiData, BiBarChartAlt2, BiWindow, BiSpreadsheet, BiCode, BiBrain } from 'react-icons/bi';
 import { BsArrowRightCircleFill } from 'react-icons/bs';
 
 // Animation variants for container
@@ -45,36 +45,40 @@ const projectVariants = {
 const Projects = () => {
   const projects = [
     {
-      title: 'Comment Spam Detection Model',
-      duration: 'June 2024 - July 2024',
-      description: 'Developed an LSTM-based text classification model for real-time spam detection in comments, achieving high accuracy with performance metrics visualization.',
+      title: 'Journaling Application (Full-Stack, AI-Integrated)',
+      duration: 'Sept 2022 - May 2026',
+      description: 'Architected and developed a full-stack React Native journaling application using Expo Router, TypeScript, and modern React patterns, implementing file-based routing and type-safe navigation across 8+ main screens.',
       technologies: [
-        { name: 'Python', icon: SiPython },
-        { name: 'TensorFlow', icon: SiTensorflow },
-        { name: 'LSTM', icon: BiData },
-        { name: 'Streamlit', icon: BiWindow }
+        { name: 'React Native', icon: BiWindow },
+        { name: 'TypeScript', icon: BiCode },
+        { name: 'Supabase', icon: BiData },
+        { name: 'OpenAI', icon: BiBrain }
       ],
       highlights: [
-        'Implemented LSTM architecture for text classification',
-        'Real-time performance metrics and visualization',
-        'Interactive web interface using Streamlit'
-      ]
+        'Engineered robust cloud synchronization system with bidirectional sync between local SQLite storage and Supabase PostgreSQL database',
+        'Implemented operation logging, conflict resolution, and exponential backoff for 99%+ data consistency',
+        'Integrated OpenAI services for intelligent journal analysis, personalized prompts, and sentiment analysis',
+        'Managed offline queuing and secured API key storage'
+      ],
+      githubLink: null // Will be added when repo is uploaded
     },
     {
-      title: 'Crop Recommendation System',
-      duration: 'Oct 2024 - Nov 2024',
-      description: 'Built an advanced crop recommendation system using GANs and deep learning, featuring comprehensive data visualizations for informed decision-making.',
+      title: 'Comment Spam Detection (Full-Stack Deployment)',
+      duration: 'June 2024 - July 2024',
+      description: 'Developed an LSTM-based spam detection model with advanced text preprocessing; served predictions via a RESTful Node.js + Express API.',
       technologies: [
         { name: 'Python', icon: SiPython },
-        { name: 'Pandas', icon: SiPandas },
         { name: 'TensorFlow', icon: SiTensorflow },
-        { name: 'GANs', icon: BiBarChartAlt2 }
+        { name: 'Node.js', icon: BiWindow },
+        { name: 'MongoDB', icon: BiData }
       ],
       highlights: [
-        'GAN-based data augmentation for improved accuracy',
-        'Interactive data visualizations for insights',
-        'Multi-parameter crop recommendation engine'
-      ]
+        'Developed an LSTM-based spam detection model with advanced text preprocessing',
+        'Served predictions via a RESTful Node.js + Express API',
+        'Used MongoDB for logging, analytics, and dataset; implemented validation and structured error handling',
+        'Built Streamlit UI for dataset uploads and real-time metrics visualization'
+      ],
+      githubLink: 'https://github.com/azizz7/text-classification-nlp-app'
     },
     {
       title: 'Forklift Data Automation',
@@ -87,7 +91,8 @@ const Projects = () => {
         'Streamlined data processing workflow',
         'Reduced manual processing time by 75%',
         'Improved data accuracy and consistency'
-      ]
+      ],
+      githubLink: null // Will be added when repo is uploaded
     }
   ];
 
@@ -116,7 +121,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              className="relative bg-gradient-to-br from-gray-900 to-gray-950 p-8 rounded-xl border-2 border-neon-blue/10 hover:border-neon-orange/50 transition-all duration-300 group backdrop-blur-sm shadow-lg shadow-black/30"
+              className="relative bg-gradient-to-br from-gray-900 to-gray-950 p-8 rounded-xl border-2 border-neon-blue/10 hover:border-neon-orange/50 transition-all duration-300 group backdrop-blur-sm shadow-lg shadow-black/30 cursor-pointer"
               variants={projectVariants}
               whileHover={{ 
                 scale: 1.02,
@@ -126,6 +131,7 @@ const Projects = () => {
                   ease: "easeOut"
                 }
               }}
+              onClick={() => project.githubLink && window.open(project.githubLink, '_blank')}
             >
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-neon-blue/5 rounded-xl filter blur-xl group-hover:bg-neon-orange/5 transition-all duration-300" />
@@ -166,7 +172,7 @@ const Projects = () => {
                 </div>
 
                 {/* Key Highlights */}
-                <div>
+                <div className="mb-6">
                   <h4 className="text-sm uppercase font-orbitron text-neon-orange mb-4 tracking-wider">
                     Highlights
                   </h4>
@@ -182,6 +188,16 @@ const Projects = () => {
                     ))}
                   </ul>
                 </div>
+
+                {/* GitHub Link Button */}
+                {project.githubLink && (
+                  <div className="flex items-center justify-center">
+                    <div className="flex items-center space-x-2 text-neon-blue hover:text-neon-orange transition-colors duration-300 group">
+                      <span className="text-sm font-montserrat font-medium">View on GitHub</span>
+                      <BsArrowRightCircleFill className="text-lg group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}

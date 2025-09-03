@@ -3,19 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaPhone, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 
-// Initialize EmailJS with your public key from environment variable
-emailjs.init(process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
-
 const Contact = () => {
   const form = useRef();
   
-  // Add this console.log to debug
-  console.log('EmailJS Environment Variables:', {
-    serviceId: process.env.REACT_APP_EMAILJS_SERVICE_ID,
-    templateId: process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-    publicKey: process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-  });
-
+  // Initialize EmailJS with your public key
+  React.useEffect(() => {
+    emailjs.init('G_BMfj-HqLi1UW-Fp');
+  }, []);
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -54,26 +49,73 @@ const Contact = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    emailjs.send(
-      process.env.REACT_APP_EMAILJS_SERVICE_ID,
-      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-      {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message
-      },
-      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-    )
-    .then(() => {
-      setStatus('Message sent successfully!');
-      setFormData({ name: '', email: '', message: '' });
-    })
-    .catch(() => {
-      setStatus('Failed to send message. Please try again.');
-    });
+    // Clear previous status
+    setStatus('');
+    
+    // Validate form
+    const newErrors = {};
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!isValidEmail(formData.email)) {
+      newErrors.email = 'Please enter a valid email';
+    }
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Debug: Log the environment variables
+      console.log('EmailJS Config:', {
+        serviceId: process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        templateId: process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        publicKey: process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+      });
+      
+      // Using new EmailJS credentials
+      const serviceId = 'service_hxylnph';
+      const templateId = 'template_st78d0p';
+      const publicKey = 'G_BMfj-HqLi1UW-Fp';
+      
+      console.log('Using new EmailJS credentials:', { serviceId, templateId, publicKey });
+      
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: 'azizbarwani5253@gmail.com'
+        },
+        publicKey
+      );
+
+      if (result.status === 200) {
+        setStatus('Message sent successfully! I will get back to you soon.');
+        setFormData({ name: '', email: '', message: '' });
+        setErrors({});
+      } else {
+        setStatus('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setStatus('Failed to send message. Please try again or contact me directly at azizbarwani5253@gmail.com');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleKeyPress = (e) => {

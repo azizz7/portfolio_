@@ -9,6 +9,7 @@ import {
 import { BiCode, BiBrain, BiData } from 'react-icons/bi';
 import { AiOutlineApi } from 'react-icons/ai';
 import { VscGraph } from 'react-icons/vsc';
+import { BiWindow, BiBarChartAlt2 } from 'react-icons/bi';
 
 // Animation variants for container and elements
 const containerVariants = {
@@ -45,52 +46,59 @@ const skillVariants = {
 
 const Skills = () => {
   const categoryColors = {
-    'Core Technologies': 'border-neon-blue',
-    'AI & ML': 'border-neon-orange',
-    'Data & Analytics': 'border-purple-500',
-    'Web & Cloud': 'border-green-500',
-    'DevOps & Tools': 'border-yellow-500'
+    'Languages': 'border-neon-blue',
+    'Web & Mobile': 'border-neon-orange',
+    'Databases': 'border-purple-500',
+    'AI & DS': 'border-green-500',
+    'Tools': 'border-yellow-500'
   };
 
   // Comprehensive skill data with categories
   const skillsData = [
-    // Core Skills
-    { name: 'Python', icon: SiPython, category: 'Core Technologies' },
-    { name: 'JavaScript', icon: SiJavascript, category: 'Core Technologies' },
-    { name: 'Problem Solving', icon: BiCode, category: 'Core Technologies' },
-    { name: 'HTML', icon: SiHtml5, category: 'Core Technologies' },
-    { name: 'CSS', icon: SiCss3, category: 'Core Technologies' },
+    // Languages
+    { name: 'JavaScript (ES6+)', icon: SiJavascript, category: 'Languages' },
+    { name: 'Python', icon: SiPython, category: 'Languages' },
+    { name: 'SQL', icon: BiData, category: 'Languages' },
+    { name: 'HTML/CSS', icon: SiHtml5, category: 'Languages' },
     
-    // AI & ML
-    { name: 'Machine Learning', icon: BiBrain, category: 'AI & ML' },
-    { name: 'TensorFlow', icon: SiTensorflow, category: 'AI & ML' },
-    { name: 'PyTorch', icon: SiPytorch, category: 'AI & ML' },
-    { name: 'NLP', icon: BiData, category: 'AI & ML' },
+    // Web & Mobile
+    { name: 'React.js', icon: SiReact, category: 'Web & Mobile' },
+    { name: 'Node.js', icon: SiNodedotjs, category: 'Web & Mobile' },
+    { name: 'Express.js', icon: BiCode, category: 'Web & Mobile' },
+    { name: 'React Native', icon: BiWindow, category: 'Web & Mobile' },
+    { name: 'REST APIs', icon: AiOutlineApi, category: 'Web & Mobile' },
     
-    // Data & Analytics
-    { name: 'Data Analysis', icon: VscGraph, category: 'Data & Analytics' },
-    { name: 'Pandas', icon: SiPandas, category: 'Data & Analytics' },
-    { name: 'NumPy', icon: SiNumpy, category: 'Data & Analytics' },
-    { name: 'SQL', icon: BiData, category: 'Data & Analytics' },
+    // Databases
+    { name: 'MongoDB', icon: SiMongodb, category: 'Databases' },
+    { name: 'PostgreSQL (Supabase)', icon: BiData, category: 'Databases' },
+    { name: 'SQLite', icon: BiData, category: 'Databases' },
+    { name: 'MySQL', icon: BiData, category: 'Databases' },
     
-    // Web & Cloud
-    { name: 'React', icon: SiReact, category: 'Web & Cloud' },
-    { name: 'Node.js', icon: SiNodedotjs, category: 'Web & Cloud' },
-    { name: 'REST APIs', icon: AiOutlineApi, category: 'Web & Cloud' },
-    { name: 'AWS', icon: SiAmazonwebservices, category: 'Web & Cloud' },
+    // AI & DS
+    { name: 'TensorFlow', icon: SiTensorflow, category: 'AI & DS' },
+    { name: 'pandas', icon: SiPandas, category: 'AI & DS' },
+    { name: 'NumPy', icon: SiNumpy, category: 'AI & DS' },
+    { name: 'Matplotlib', icon: VscGraph, category: 'AI & DS' },
+    { name: 'Seaborn', icon: VscGraph, category: 'AI & DS' },
     
-    // DevOps & Tools
-    { name: 'Git', icon: SiGit, category: 'DevOps & Tools' },
-    { name: 'Docker', icon: SiDocker, category: 'DevOps & Tools' },
-    { name: 'MongoDB', icon: SiMongodb, category: 'DevOps & Tools' }
+    // Tools
+    { name: 'Git', icon: SiGit, category: 'Tools' },
+    { name: 'GitHub', icon: SiGit, category: 'Tools' },
+    { name: 'VS Code', icon: BiCode, category: 'Tools' },
+    { name: 'IntelliJ', icon: BiCode, category: 'Tools' },
+    { name: 'Expo', icon: BiWindow, category: 'Tools' },
+    { name: 'Streamlit', icon: BiWindow, category: 'Tools' },
+    { name: 'AWS', icon: SiAmazonwebservices, category: 'Tools' },
+    { name: 'Power BI', icon: BiBarChartAlt2, category: 'Tools' },
+    { name: 'Tableau', icon: BiBarChartAlt2, category: 'Tools' }
   ];
 
   const categories = [
-    'Core Technologies',
-    'AI & ML',
-    'Data & Analytics',
-    'Web & Cloud',
-    'DevOps & Tools'
+    'Languages',
+    'Web & Mobile',
+    'Databases',
+    'AI & DS',
+    'Tools'
   ];
 
   return (

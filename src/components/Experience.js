@@ -8,14 +8,14 @@ const Experience = () => {
   const experiences = [
     {
       company: 'JONES LANG LASALLE (JLL)',
-      role: 'Research Intern',
-      period: 'March 2025 - Present',
-      location: 'India',
-      description: 'Engaged in research on digital infrastructure, focusing on subsea communication systems and connectivity trends.',
+      role: 'Strategic Research Intern — Digital Infrastructure',
+      period: 'March 2025 - June 2025',
+      location: 'Mumbai, India',
+      description: 'Using software tools and writing code to analyse data for benchmarking India against global hubs (Singapore, Virginia Beach, Marseille) and delivered an investment outlook with CAPEX/OPEX optimization strategies that projected to cut the costs by up to 20%.',
       responsibilities: [
-        'Reviewed industry reports and regulations for insights',
-        'Used tools to automate data collection',
-        'Prepared reports for decision-making'
+        'Researched and authored a strategic report on India\'s submarine cable infrastructure, covering global investment trends, technical architectures (DWDM, SDM, AI-enabled monitoring), and cost models',
+        'Analysed regulatory frameworks (UNCLOS, TRAI/DoT, ILD/NLD licensing) and proposed reforms including a Domestic Submarine Cable License, single-window clearance, and stub-cable deployment policies',
+        'Used software tools and wrote code to analyse data for benchmarking India against global hubs'
       ],
       technologies: [
         { name: 'Data Analysis', icon: FaChartLine },
@@ -24,15 +24,15 @@ const Experience = () => {
       ]
     },
     {
-      company: 'Motherson Technology Services Limited',
+      company: 'MOTHERSON TECHNOLOGY SERVICES LIMITED',
       role: 'Project Training Intern',
       period: 'June 2024 - July 2024',
       location: 'Noida, UP',
-      description: 'Built a sentiment analysis and spam classification model using LSTM, Python, TensorFlow, NLP.',
+      description: 'Developed and trained an LSTM-based spam/sentiment classifier using Python, TensorFlow, and NLP pipelines (tokenization, lemmatization, padded sequences).',
       responsibilities: [
-        'Implemented deep learning models',
-        'Utilized advanced NLP techniques',
-        'Optimized model performance'
+        'Built an end-to-end preprocessing pipeline and optimized the architecture with a sigmoid output layer for binary classification',
+        'Achieved high accuracy and strong F1-score on real-world data; evaluated model with confusion matrix and classification reports',
+        'Developed and trained an LSTM-based spam/sentiment classifier using Python, TensorFlow, and NLP pipelines'
       ],
       technologies: [
         { name: 'Python', icon: FaPython },
@@ -40,9 +40,9 @@ const Experience = () => {
       ]
     },
     {
-      company: 'I-Class Solutions (I) Pvt Ltd',
+      company: 'I-CLASS SOLUTIONS (I) PVT LTD',
       role: 'Junior Data Analyst Intern',
-      period: 'July 2022 - Sept 2022',
+      period: 'April 2022 - Sept 2022',
       location: 'Indore, MP',
       description: 'Automated workflows with Excel Macros, prototyped a blockchain app in a CodeJam.',
       responsibilities: [

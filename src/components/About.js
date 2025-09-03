@@ -76,7 +76,7 @@ const About = () => {
               I'm <span className="text-neon-blue font-semibold">Aziz Barwaniwala</span>, 
               a 21-year-old Data Science Engineering student at 
               <span className="text-neon-orange font-semibold"> Manipal University Jaipur</span>, 
-              passionate about tech and aiming to become a future billionaire through innovation.
+              passionate about AI, Data Science, and building impactful solutions that drive innovation and positive change.
             </p>
           </motion.div>
 
