@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import {
-  SiPython, SiTensorflow, SiPytorch, SiNumpy,
-  SiPandas, SiAmazonwebservices, SiGit, SiDocker,
+  SiPython, SiTensorflow, SiNumpy,
+  SiPandas, SiAmazonwebservices, SiGit,
   SiMongodb, SiJavascript, SiReact, SiNodedotjs,
-  SiHtml5, SiCss3
+  SiHtml5
 } from 'react-icons/si';
-import { BiCode, BiBrain, BiData } from 'react-icons/bi';
+import { BiCode, BiData } from 'react-icons/bi';
 import { AiOutlineApi } from 'react-icons/ai';
 import { VscGraph } from 'react-icons/vsc';
 import { BiWindow, BiBarChartAlt2 } from 'react-icons/bi';

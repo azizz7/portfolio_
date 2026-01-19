@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import {
   SiPython, SiTensorflow, SiPandas, SiScikitlearn, SiNextdotjs, SiFastapi
 } from 'react-icons/si';
-import { BiData, BiBarChartAlt2, BiWindow, BiSpreadsheet, BiCode, BiBrain } from 'react-icons/bi';
+import { BiData, BiWindow, BiSpreadsheet, BiCode, BiBrain } from 'react-icons/bi';
 import { BsArrowRightCircleFill } from 'react-icons/bs';
 
 // Animation variants for container

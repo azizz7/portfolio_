@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, HashRouter } from 'react-router-dom';
+import { Route, Routes, HashRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
@@ -17,8 +17,8 @@ function App() {
       <div className="App min-h-screen bg-dark-bg flex flex-col">
         <Navbar />
         <Routes>
-          <Route 
-            path="/" 
+          <Route
+            path="/"
             element={
               <main className="flex-grow">
                 <Home />
@@ -33,7 +33,7 @@ function App() {
                 <Divider />
                 <Contact />
               </main>
-            } 
+            }
           />
           <Route path="/about" element={<About />} />
           <Route path="/skills" element={<Skills />} />

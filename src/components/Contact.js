@@ -5,12 +5,12 @@ import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const form = useRef();
-  
+
   // Initialize EmailJS with your public key
   React.useEffect(() => {
     emailjs.init('G_BMfj-HqLi1UW-Fp');
   }, []);
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -51,10 +51,10 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Clear previous status
     setStatus('');
-    
+
     // Validate form
     const newErrors = {};
     if (!formData.name.trim()) {
@@ -83,14 +83,14 @@ const Contact = () => {
         templateId: process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
         publicKey: process.env.REACT_APP_EMAILJS_PUBLIC_KEY
       });
-      
+
       // Using new EmailJS credentials
       const serviceId = 'service_hxylnph';
       const templateId = 'template_st78d0p';
       const publicKey = 'G_BMfj-HqLi1UW-Fp';
-      
+
       console.log('Using new EmailJS credentials:', { serviceId, templateId, publicKey });
-      
+
       const result = await emailjs.send(
         serviceId,
         templateId,
@@ -154,31 +154,12 @@ const Contact = () => {
     }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
 
   return (
     <section id="contact" className="min-h-screen bg-dark-bg py-20">
       <div className="max-w-2xl mx-auto px-4">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -203,9 +184,8 @@ const Contact = () => {
                 value={formData.name}
                 onChange={handleChange}
                 onKeyPress={handleKeyPress}
-                className={`w-full bg-gray-700 text-white border ${
-                  errors.name ? 'border-red-400' : 'border-gray-600'
-                } rounded-md p-2 focus:outline-none focus:border-blue-500`}
+                className={`w-full bg-gray-700 text-white border ${errors.name ? 'border-red-400' : 'border-gray-600'
+                  } rounded-md p-2 focus:outline-none focus:border-blue-500`}
                 required
               />
               <AnimatePresence>
@@ -232,9 +212,8 @@ const Contact = () => {
                 value={formData.email}
                 onChange={handleChange}
                 onKeyPress={handleKeyPress}
-                className={`w-full bg-gray-700 text-white border ${
-                  errors.email ? 'border-red-400' : 'border-gray-600'
-                } rounded-md p-2 focus:outline-none focus:border-blue-500`}
+                className={`w-full bg-gray-700 text-white border ${errors.email ? 'border-red-400' : 'border-gray-600'
+                  } rounded-md p-2 focus:outline-none focus:border-blue-500`}
                 required
               />
               <AnimatePresence>
@@ -260,9 +239,8 @@ const Contact = () => {
                 value={formData.message}
                 onChange={handleChange}
                 rows="4"
-                className={`w-full bg-gray-700 text-white border ${
-                  errors.message ? 'border-red-400' : 'border-gray-600'
-                } rounded-md p-2 focus:outline-none focus:border-blue-500`}
+                className={`w-full bg-gray-700 text-white border ${errors.message ? 'border-red-400' : 'border-gray-600'
+                  } rounded-md p-2 focus:outline-none focus:border-blue-500`}
                 required
               />
               <AnimatePresence>
@@ -282,9 +260,8 @@ const Contact = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full ${
-                isSubmitting ? 'bg-blue-400' : 'bg-blue-500 hover:bg-blue-600'
-              } text-white rounded-md px-4 py-2 transition-colors duration-300`}
+              className={`w-full ${isSubmitting ? 'bg-blue-400' : 'bg-blue-500 hover:bg-blue-600'
+                } text-white rounded-md px-4 py-2 transition-colors duration-300`}
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
@@ -294,9 +271,8 @@ const Contact = () => {
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className={`text-center mt-4 ${
-                    status.includes('Failed') ? 'text-red-400' : 'text-green-400'
-                  }`}
+                  className={`text-center mt-4 ${status.includes('Failed') ? 'text-red-400' : 'text-green-400'
+                    }`}
                 >
                   {status}
                 </motion.p>
@@ -306,7 +282,7 @@ const Contact = () => {
         </motion.div>
 
         {/* Contact Details Section */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.6 }}
