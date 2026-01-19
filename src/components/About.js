@@ -5,11 +5,11 @@ import mujDome from '../assets/muj-dome.jpg';
 const About = () => {
   // Animation variants for the container
   const containerVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       y: 50
     },
-    visible: { 
+    visible: {
       opacity: 1,
       y: 0,
       transition: {
@@ -24,11 +24,11 @@ const About = () => {
 
   // Animation variants for individual elements
   const itemVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       x: -20
     },
-    visible: { 
+    visible: {
       opacity: 1,
       x: 0,
       transition: {
@@ -40,7 +40,7 @@ const About = () => {
 
   return (
     <section className="min-h-screen bg-dark-bg text-white py-20 px-4" id="about">
-      <motion.div 
+      <motion.div
         className="max-w-4xl mx-auto"
         initial="hidden"
         whileInView="visible"
@@ -48,7 +48,7 @@ const About = () => {
         variants={containerVariants}
       >
         {/* Section header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-12"
           variants={itemVariants}
         >
@@ -59,53 +59,53 @@ const About = () => {
         </motion.div>
 
         {/* Main content */}
-        <motion.div 
+        <motion.div
           className="space-y-8"
           variants={itemVariants}
         >
           {/* About text with gradient border */}
-          <motion.div 
+          <motion.div
             className="bg-dark-surface p-6 rounded-lg border-l-4 border-neon-blue"
-            whileHover={{ 
+            whileHover={{
               scale: 1.02,
               boxShadow: '0 0 20px rgba(0, 243, 255, 0.2)'
             }}
             transition={{ duration: 0.3 }}
           >
             <p className="text-lg md:text-xl font-montserrat leading-relaxed text-gray-300">
-              I'm <span className="text-neon-blue font-semibold">Aziz Barwaniwala</span>, 
-              a 21-year-old Data Science Engineering student at 
-              <span className="text-neon-orange font-semibold"> Manipal University Jaipur</span>, 
-              passionate about AI, Data Science, and building impactful solutions that drive innovation and positive change.
+              I'm <span className="text-neon-blue font-semibold">Aziz Barwaniwala</span>,
+              a motivated and results-driven IT professional with hands-on experience from three internships, specializing in
+              <span className="text-neon-orange font-semibold"> Artificial Intelligence (AI) and Machine Learning (ML)</span>.
+              I have demonstrated proficiency in deploying and integrating AI solutions into live projects and contributing to strategic research.
             </p>
           </motion.div>
 
           {/* Education section with background image */}
-          <motion.div 
+          <motion.div
             className="relative overflow-hidden rounded-lg"
             variants={itemVariants}
-            whileHover={{ 
+            whileHover={{
               scale: 1.02,
               boxShadow: '0 0 25px rgba(255, 123, 0, 0.3)'
             }}
             transition={{ duration: 0.3 }}
           >
             {/* Background image with overlay */}
-            <div 
+            <div
               className="absolute inset-0 bg-cover bg-top transition-transform duration-300 group-hover:scale-110"
-              style={{ 
+              style={{
                 backgroundImage: `url(${mujDome})`,
                 backgroundPosition: '50% 35%'
               }}
             >
-              <motion.div 
+              <motion.div
                 className="absolute inset-0 bg-black bg-opacity-70 backdrop-blur-sm"
                 whileHover={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}
               ></motion.div>
             </div>
 
             {/* Education content */}
-            <motion.div 
+            <motion.div
               className="relative p-8 z-10"
               whileHover={{ scale: 1.01 }}
             >
@@ -113,7 +113,7 @@ const About = () => {
                 Education
               </h3>
               <div className="space-y-4">
-                <motion.div 
+                <motion.div
                   className="border-l-2 border-neon-blue pl-4"
                   whileHover={{ borderColor: 'rgb(255, 123, 0)' }}
                 >
@@ -127,18 +127,33 @@ const About = () => {
                     Sept 2022 - May 2026
                   </p>
                 </motion.div>
+
+                <motion.div
+                  className="border-l-2 border-neon-blue pl-4"
+                  whileHover={{ borderColor: 'rgb(255, 123, 0)' }}
+                >
+                  <h4 className="text-xl font-semibold text-white">
+                    (10+2, CBSE Board) PCM with Computer Science
+                  </h4>
+                  <p className="text-neon-blue font-montserrat mt-1 transition-colors duration-300">
+                    The Shishukunj International School
+                  </p>
+                  <p className="text-gray-300 font-montserrat">
+                    Completed in 2022 | Percentage: 75%
+                  </p>
+                </motion.div>
               </div>
             </motion.div>
           </motion.div>
 
           {/* Additional details with hover effects */}
-          <motion.div 
+          <motion.div
             className="grid md:grid-cols-2 gap-6 mt-8"
             variants={itemVariants}
           >
-            <motion.div 
+            <motion.div
               className="bg-dark-surface p-6 rounded-lg"
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 boxShadow: '0 0 15px rgba(255, 123, 0, 0.2)'
               }}
@@ -154,9 +169,9 @@ const About = () => {
               </p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="bg-dark-surface p-6 rounded-lg"
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 boxShadow: '0 0 15px rgba(0, 243, 255, 0.2)'
               }}

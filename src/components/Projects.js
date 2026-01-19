@@ -1,18 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  SiPython, SiTensorflow, SiPandas
+import {
+  SiPython, SiTensorflow, SiPandas, SiScikitlearn, SiNextdotjs, SiFastapi
 } from 'react-icons/si';
 import { BiData, BiBarChartAlt2, BiWindow, BiSpreadsheet, BiCode, BiBrain } from 'react-icons/bi';
 import { BsArrowRightCircleFill } from 'react-icons/bs';
 
 // Animation variants for container
 const containerVariants = {
-  hidden: { 
+  hidden: {
     opacity: 0,
     y: 30
   },
-  visible: { 
+  visible: {
     opacity: 1,
     y: 0,
     transition: {
@@ -26,12 +26,12 @@ const containerVariants = {
 
 // Animation variants for individual projects
 const projectVariants = {
-  hidden: { 
+  hidden: {
     opacity: 0,
     scale: 0.98,
     y: 15
   },
-  visible: { 
+  visible: {
     opacity: 1,
     scale: 1,
     y: 0,
@@ -44,6 +44,25 @@ const projectVariants = {
 
 const Projects = () => {
   const projects = [
+    {
+      title: 'Ad Performance Intelligence Engine',
+      duration: 'Jan 2026 - Present',
+      description: 'AI-powered analytics platform that analyzes digital advertising data to generate actionable insights and predict future performance.',
+      technologies: [
+        { name: 'Next.js', icon: SiNextdotjs },
+        { name: 'FastAPI', icon: SiFastapi },
+        { name: 'Python', icon: SiPython },
+        { name: 'Pandas', icon: SiPandas },
+        { name: 'Scikit-learn', icon: SiScikitlearn }
+      ],
+      highlights: [
+        'Real-time performance analytics (CTR, CPC, ROAS)',
+        'ML-based revenue and conversion forecasting',
+        'Automated plain-English business insights generation',
+        'Built with FastAPI backend and Next.js frontend'
+      ],
+      githubLink: 'https://github.com/azizz7/ad-engine'
+    },
     {
       title: 'Journaling Application (Full-Stack, AI-Integrated)',
       duration: 'Sept 2022 - May 2026',
@@ -99,14 +118,14 @@ const Projects = () => {
   return (
     <section className="min-h-screen bg-dark-bg text-white py-24 px-4 md:px-6" id="projects">
       <motion.div
-        className="max-w-6xl mx-auto"
+        className="max-w-7xl mx-auto"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={containerVariants}
       >
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-20"
           variants={projectVariants}
         >
@@ -117,13 +136,13 @@ const Projects = () => {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
               className="relative bg-gradient-to-br from-gray-900 to-gray-950 p-8 rounded-xl border-2 border-neon-blue/10 hover:border-neon-orange/50 transition-all duration-300 group backdrop-blur-sm shadow-lg shadow-black/30 cursor-pointer"
               variants={projectVariants}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.02,
                 y: -5,
                 transition: {
@@ -135,7 +154,7 @@ const Projects = () => {
             >
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-neon-blue/5 rounded-xl filter blur-xl group-hover:bg-neon-orange/5 transition-all duration-300" />
-              
+
               {/* Content Container */}
               <div className="relative">
                 {/* Project Header */}
@@ -160,7 +179,7 @@ const Projects = () => {
                   </h4>
                   <div className="flex flex-wrap gap-3">
                     {project.technologies.map((tech) => (
-                      <div 
+                      <div
                         key={tech.name}
                         className="flex items-center space-x-2 text-sm text-gray-300 bg-gray-900/50 px-4 py-2 rounded-full shadow-sm transform transition-transform duration-200 hover:scale-105"
                       >
@@ -178,7 +197,7 @@ const Projects = () => {
                   </h4>
                   <ul className="space-y-4">
                     {project.highlights.map((highlight, i) => (
-                      <li 
+                      <li
                         key={i}
                         className="flex items-start space-x-3 text-sm text-gray-300 transform transition-transform duration-200 hover:translate-x-1"
                       >
