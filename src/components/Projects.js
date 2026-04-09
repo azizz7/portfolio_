@@ -1,227 +1,139 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import {
-  SiPython, SiTensorflow, SiPandas, SiScikitlearn, SiNextdotjs, SiFastapi
-} from 'react-icons/si';
-import { BiData, BiWindow, BiSpreadsheet, BiCode, BiBrain } from 'react-icons/bi';
-import { BsArrowRightCircleFill } from 'react-icons/bs';
-
-// Animation variants for container
-const containerVariants = {
-  hidden: {
-    opacity: 0,
-    y: 30
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.25, 0.1, 0.25, 1], // Custom cubic-bezier for smoother motion
-      delayChildren: 0.1,
-      staggerChildren: 0.08
-    }
-  }
-};
-
-// Animation variants for individual projects
-const projectVariants = {
-  hidden: {
-    opacity: 0,
-    scale: 0.98,
-    y: 15
-  },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: {
-      duration: 0.3,
-      ease: [0.25, 0.1, 0.25, 1]
-    }
-  }
-};
+import { FiGithub, FiArrowRight } from 'react-icons/fi';
+import ProjectPlaceholder from '../assets/images/project-placeholder.png';
+import RevealText from './RevealText';
 
 const Projects = () => {
   const projects = [
     {
-      title: 'Ad Performance Intelligence Engine',
-      duration: 'Jan 2026 - Present',
-      description: 'AI-powered analytics platform that analyzes digital advertising data to generate actionable insights and predict future performance.',
-      technologies: [
-        { name: 'Next.js', icon: SiNextdotjs },
-        { name: 'FastAPI', icon: SiFastapi },
-        { name: 'Python', icon: SiPython },
-        { name: 'Pandas', icon: SiPandas },
-        { name: 'Scikit-learn', icon: SiScikitlearn }
-      ],
-      highlights: [
-        'Real-time performance analytics (CTR, CPC, ROAS)',
-        'ML-based revenue and conversion forecasting',
-        'Automated plain-English business insights generation',
-        'Built with FastAPI backend and Next.js frontend'
-      ],
-      githubLink: 'https://github.com/azizz7/ad-engine'
+      title: 'Ad Engine',
+      category: 'Analytics Platform',
+      description: 'AI-powered analytics platform generating actionable insights and performance predictions for digital advertising campaigns.',
+      technologies: ['Next.js', 'FastAPI', 'Python', 'ML'],
+      link: 'https://github.com/azizz7/ad-engine',
+      color: 'bg-accent-cyan'
     },
     {
-      title: 'Journaling Application (Full-Stack, AI-Integrated)',
-      duration: 'Sept 2022 - May 2026',
-      description: 'Architected and developed a full-stack React Native journaling application using Expo Router, TypeScript, and modern React patterns, implementing file-based routing and type-safe navigation across 8+ main screens.',
-      technologies: [
-        { name: 'React Native', icon: BiWindow },
-        { name: 'TypeScript', icon: BiCode },
-        { name: 'Supabase', icon: BiData },
-        { name: 'OpenAI', icon: BiBrain }
-      ],
-      highlights: [
-        'Engineered robust cloud synchronization system with bidirectional sync between local SQLite storage and Supabase PostgreSQL database',
-        'Implemented operation logging, conflict resolution, and exponential backoff for 99%+ data consistency',
-        'Integrated OpenAI services for intelligent journal analysis, personalized prompts, and sentiment analysis',
-        'Managed offline queuing and secured API key storage'
-      ],
-      githubLink: null // Will be added when repo is uploaded
+      title: 'AI Journal',
+      category: 'Mobile Application',
+      description: 'Architected a robust mobile journaling app with offline-first synchronization, OpenAI integration, and conflict resolution.',
+      technologies: ['React Native', 'TypeScript', 'Supabase', 'OpenAI'],
+      link: null,
+      color: 'bg-accent-yellow'
     },
     {
-      title: 'Comment Spam Detection (Full-Stack Deployment)',
-      duration: 'June 2024 - July 2024',
-      description: 'Developed an LSTM-based spam detection model with advanced text preprocessing; served predictions via a RESTful Node.js + Express API.',
-      technologies: [
-        { name: 'Python', icon: SiPython },
-        { name: 'TensorFlow', icon: SiTensorflow },
-        { name: 'Node.js', icon: BiWindow },
-        { name: 'MongoDB', icon: BiData }
-      ],
-      highlights: [
-        'Developed an LSTM-based spam detection model with advanced text preprocessing',
-        'Served predictions via a RESTful Node.js + Express API',
-        'Used MongoDB for logging, analytics, and dataset; implemented validation and structured error handling',
-        'Built Streamlit UI for dataset uploads and real-time metrics visualization'
-      ],
-      githubLink: 'https://github.com/azizz7/text-classification-nlp-app'
+      title: 'Spam Detector',
+      category: 'NLP Security Model',
+      description: 'LSTM-based classifier for comment spam detection, served via a RESTful API with advanced text preprocessing pipelined.',
+      technologies: ['TensorFlow', 'Python', 'Node.js', 'MongoDB'],
+      link: 'https://github.com/azizz7/text-classification-nlp-app',
+      color: 'bg-accent-orange'
     },
     {
-      title: 'Forklift Data Automation',
-      duration: 'July 2022 - Sept 2022',
-      description: 'Automated data processing for an Australian company using Excel Macros, significantly reducing manual effort and improving data accuracy.',
-      technologies: [
-        { name: 'Excel Macros', icon: BiSpreadsheet }
-      ],
-      highlights: [
-        'Streamlined data processing workflow',
-        'Reduced manual processing time by 75%',
-        'Improved data accuracy and consistency'
-      ],
-      githubLink: null // Will be added when repo is uploaded
+      title: 'Data Automator',
+      category: 'Workflow Automation',
+      description: 'Automated complex data processing workflows for logistics, reducing manual effort by 75% and ensuring data consistency.',
+      technologies: ['Excel Macros', 'VBA', 'Data Processing'],
+      link: null,
+      color: 'bg-accent-red'
     }
   ];
 
   return (
-    <section className="min-h-screen bg-dark-bg text-white py-24 px-4 md:px-6" id="projects">
-      <motion.div
-        className="max-w-7xl mx-auto"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={containerVariants}
-      >
-        {/* Section Header */}
-        <motion.div
-          className="text-center mb-20"
-          variants={projectVariants}
-        >
-          <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-6">
-            Featured <span className="text-neon-blue">Projects</span>
-          </h2>
-          <div className="w-32 h-1.5 bg-neon-orange mx-auto rounded-full"></div>
-        </motion.div>
+    <section id="projects" className="py-32 bg-bg-primary relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12">
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        {/* Header */}
+        <div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-8">
+          <div>
+            <h2 className="text-accent-gold font-fira font-bold tracking-widest text-sm uppercase mb-4">
+              <RevealText text="Selected Works" />
+            </h2>
+            <h3 className="text-6xl md:text-9xl font-oswald font-bold text-soft-white leading-[0.8] uppercase tracking-tighter mix-blend-difference">
+              Featured <br />
+              <span className="text-transparent text-outline-white" style={{ WebkitTextStroke: '2px #ededed' }}>Projects.</span>
+            </h3>
+          </div>
+          <div className="hidden md:block">
+            <a href="https://github.com/azizz7" target="_blank" rel="noreferrer" className="group flex items-center gap-2 font-fira text-accent-cyan hover:text-white transition-colors">
+              VIEW ALL REPOS <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+        </div>
+
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
           {projects.map((project, index) => (
             <motion.div
-              key={project.title}
-              className="relative bg-gradient-to-br from-gray-900 to-gray-950 p-8 rounded-xl border-2 border-neon-blue/10 hover:border-neon-orange/50 transition-all duration-300 group backdrop-blur-sm shadow-lg shadow-black/30 cursor-pointer"
-              variants={projectVariants}
-              whileHover={{
-                scale: 1.02,
-                y: -5,
-                transition: {
-                  duration: 0.2,
-                  ease: "easeOut"
-                }
-              }}
-              onClick={() => project.githubLink && window.open(project.githubLink, '_blank')}
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              className="group relative"
             >
-              {/* Glow Effect */}
-              <div className="absolute inset-0 bg-neon-blue/5 rounded-xl filter blur-xl group-hover:bg-neon-orange/5 transition-all duration-300" />
+              {/* Hard Shadow Offset */}
+              <div className={`absolute top-4 left-4 w-full h-full border-2 border-black ${project.color} -z-10 transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2`} />
 
-              {/* Content Container */}
-              <div className="relative">
-                {/* Project Header */}
-                <div className="mb-6">
-                  <h3 className="text-2xl md:text-3xl font-orbitron font-bold text-neon-blue mb-3 group-hover:text-neon-orange transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-gray-400 font-montserrat tracking-wider">
-                    {project.duration}
+              <div className="bg-deep-slate border-2 border-black p-0 h-full flex flex-col">
+                {/* Image Container */}
+                <div className="aspect-video w-full border-b-2 border-black overflow-hidden relative">
+                  <img
+                    src={ProjectPlaceholder}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  {/* Overlay */}
+                  <div className={`absolute inset-0 ${project.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none`} />
+
+                  <div className="absolute top-4 right-4 bg-black text-white px-3 py-1 font-fira text-xs font-bold border border-white">
+                    {project.category}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-8 flex flex-col flex-grow">
+                  <div className="flex justify-between items-start mb-4">
+                    <h4 className="text-4xl font-oswald font-bold text-soft-white uppercase leading-none">
+                      {project.title}
+                    </h4>
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-grey hover:text-white transition-colors p-2 border border-transparent hover:border-white rounded-full"
+                      >
+                        <FiGithub size={24} />
+                      </a>
+                    )}
+                  </div>
+
+                  <p className="text-muted-grey font-inter mb-6 leading-relaxed flex-grow">
+                    {project.description}
                   </p>
-                </div>
 
-                {/* Project Description */}
-                <p className="text-base text-gray-300 font-montserrat mb-8 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Technologies */}
-                <div className="mb-8">
-                  <h4 className="text-sm uppercase font-orbitron text-neon-orange mb-4 tracking-wider">
-                    Technologies
-                  </h4>
-                  <div className="flex flex-wrap gap-3">
-                    {project.technologies.map((tech) => (
-                      <div
-                        key={tech.name}
-                        className="flex items-center space-x-2 text-sm text-gray-300 bg-gray-900/50 px-4 py-2 rounded-full shadow-sm transform transition-transform duration-200 hover:scale-105"
-                      >
-                        <tech.icon className="text-neon-blue text-lg" />
-                        <span className="font-montserrat">{tech.name}</span>
-                      </div>
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2 pt-4 border-t-2 border-black/20">
+                    {project.technologies.map((tech, i) => (
+                      <span key={i} className="text-xs font-fira font-bold text-black bg-white px-2 py-1 border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                        {tech}
+                      </span>
                     ))}
                   </div>
                 </div>
-
-                {/* Key Highlights */}
-                <div className="mb-6">
-                  <h4 className="text-sm uppercase font-orbitron text-neon-orange mb-4 tracking-wider">
-                    Highlights
-                  </h4>
-                  <ul className="space-y-4">
-                    {project.highlights.map((highlight, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start space-x-3 text-sm text-gray-300 transform transition-transform duration-200 hover:translate-x-1"
-                      >
-                        <BsArrowRightCircleFill className="text-neon-blue mt-1 flex-shrink-0 group-hover:text-neon-orange transition-colors duration-300" />
-                        <span className="font-montserrat leading-relaxed">{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* GitHub Link Button */}
-                {project.githubLink && (
-                  <div className="flex items-center justify-center">
-                    <div className="flex items-center space-x-2 text-neon-blue hover:text-neon-orange transition-colors duration-300 group">
-                      <span className="text-sm font-montserrat font-medium">View on GitHub</span>
-                      <BsArrowRightCircleFill className="text-lg group-hover:translate-x-1 transition-transform duration-300" />
-                    </div>
-                  </div>
-                )}
               </div>
             </motion.div>
           ))}
         </div>
-      </motion.div>
+
+        <div className="md:hidden mt-12 text-center">
+          <a href="https://github.com/azizz7" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 font-fira text-accent-cyan hover:text-white transition-colors">
+            VIEW ALL REPOS <FiArrowRight />
+          </a>
+        </div>
+      </div>
     </section>
   );
 };

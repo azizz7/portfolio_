@@ -1,128 +1,119 @@
 import React from 'react';
-import { FaPython, FaChartLine, FaMicrosoft } from 'react-icons/fa';
-import { SiTensorflow } from 'react-icons/si';
-import { BiNetworkChart } from 'react-icons/bi';
-import { BsCodeSlash } from 'react-icons/bs';
+import { motion } from 'framer-motion';
+import RevealText from './RevealText';
 
 const Experience = () => {
   const experiences = [
     {
       company: 'JONES LANG LASALLE (JLL)',
-      role: 'Strategic Research Intern — Digital Infrastructure',
+      role: 'Strategic Research Intern',
       period: 'March 2025 - June 2025',
       location: 'Mumbai, India',
-      description: 'Using software tools and writing code to analyse data for benchmarking India against global hubs (Singapore, Virginia Beach, Marseille) and delivered an investment outlook with CAPEX/OPEX optimization strategies that projected to cut the costs by up to 20%.',
+      description: 'Optimized CAPEX/OPEX strategies for digital infrastructure benchmarking.',
+      color: 'bg-accent-cyan',
       responsibilities: [
-        'Researched and authored a strategic report on India\'s submarine cable infrastructure, covering global investment trends, technical architectures (DWDM, SDM, AI-enabled monitoring), and cost models',
-        'Analysed regulatory frameworks (UNCLOS, TRAI/DoT, ILD/NLD licensing) and proposed reforms including a Domestic Submarine Cable License, single-window clearance, and stub-cable deployment policies',
-        'Used software tools and wrote code to analyse data for benchmarking India against global hubs'
-      ],
-      technologies: [
-        { name: 'Data Analysis', icon: FaChartLine },
-        { name: 'Network Infrastructure', icon: BiNetworkChart },
-        { name: 'Python', icon: FaPython }
+        'Analyzed submarine cable infrastructure & global investment trends.',
+        'Proposed regulatory reforms for Domestic Submarine Cable Licensing.',
+        'Benchmarked India against global hubs using Python data analysis.'
       ]
     },
     {
-      company: 'MOTHERSON TECHNOLOGY SERVICES LIMITED',
+      company: 'MOTHERSON TECHNOLOGY',
       role: 'Project Training Intern',
       period: 'June 2024 - July 2024',
       location: 'Noida, UP',
-      description: 'Developed and trained an LSTM-based spam/sentiment classifier using Python, TensorFlow, and NLP pipelines (tokenization, lemmatization, padded sequences).',
+      description: 'Developed LSTM-based spam/sentiment classifier pipelines.',
+      color: 'bg-accent-yellow',
       responsibilities: [
-        'Built an end-to-end preprocessing pipeline and optimized the architecture with a sigmoid output layer for binary classification',
-        'Achieved high accuracy and strong F1-score on real-world data; evaluated model with confusion matrix and classification reports',
-        'Developed and trained an LSTM-based spam/sentiment classifier using Python, TensorFlow, and NLP pipelines'
-      ],
-      technologies: [
-        { name: 'Python', icon: FaPython },
-        { name: 'TensorFlow', icon: SiTensorflow }
+        'Built end-to-end NLP preprocessing pipelines.',
+        'Optimized LSTM architecture for high accuracy binary classification.',
+        'Evaluated models using confusion matrices & classification reports.'
       ]
     },
     {
-      company: 'I-CLASS SOLUTIONS (I) PVT LTD',
+      company: 'I-CLASS SOLUTIONS',
       role: 'Junior Data Analyst Intern',
       period: 'April 2022 - Sept 2022',
       location: 'Indore, MP',
-      description: 'Automated workflows with Excel Macros, prototyped a blockchain app in a CodeJam.',
+      description: 'Automated workflows and prototyped blockchain applications.',
+      color: 'bg-accent-orange',
       responsibilities: [
-        'Developed Excel automation solutions',
-        'Participated in blockchain prototype development',
-        'Optimized data processing workflows'
-      ],
-      technologies: [
-        { name: 'Excel', icon: FaMicrosoft },
-        { name: 'Programming', icon: BsCodeSlash }
+        'Developed Excel automation solutions to streamline workflows.',
+        'Contributed to blockchain application prototyping in CodeJam.',
+        'Optimized data processing for better efficiency.'
       ]
     }
   ];
 
   return (
-    <section id="experience" className="min-h-screen bg-dark-bg py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center text-white mb-16">
-          Professional <span className="text-neon-blue">Experience</span>
-          <div className="w-20 h-1 bg-neon-blue mx-auto mt-4 rounded-full"></div>
-        </h2>
+    <section id="experience" className="py-32 bg-bg-primary relative overflow-hidden">
+      <div className="max-w-5xl mx-auto px-6 sm:px-12">
 
-        <div className="space-y-10">
+        {/* Header */}
+        <div className="mb-24">
+          <h2 className="text-accent-gold font-fira font-bold tracking-widest text-sm uppercase mb-4">
+            <RevealText text="Career Path" />
+          </h2>
+          <h3 className="text-6xl md:text-9xl font-oswald font-bold text-soft-white leading-[0.8] uppercase tracking-tighter mix-blend-difference">
+            Professional <br />
+            <span className="text-transparent text-outline-white" style={{ WebkitTextStroke: '2px #ededed' }}>Experience.</span>
+          </h3>
+        </div>
+
+        {/* Experience Cards */}
+        <div className="space-y-20 relative">
+          {/* Decorative Line */}
+          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-white/10 -z-10 hidden md:block" />
+
           {experiences.map((exp, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-gradient-to-r from-gray-900 to-gray-800 
-                         rounded-xl p-8 shadow-lg
-                         hover:shadow-xl hover:shadow-neon-blue/20
-                         border border-gray-800 hover:border-neon-blue/30
-                         transition-all duration-500 hover:-translate-y-2
-                         transform hover:scale-[1.01]"
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className={`relative md:w-5/6 ${index % 2 === 0 ? 'mr-auto md:pr-12' : 'ml-auto md:pl-12'}`}
             >
-              {/* Company and Role Header */}
-              <div className="flex flex-col md:flex-row md:justify-between mb-6">
-                <div>
-                  <h3 className="text-2xl font-semibold text-blue-400 hover:text-neon-blue transition-colors duration-300">
-                    {exp.company}
-                  </h3>
-                  <p className="text-orange-400 font-medium mt-2 text-lg">
-                    {exp.role}
-                  </p>
-                </div>
-                <div className="text-gray-400 text-sm mt-2 md:mt-0 md:text-right">
-                  <p className="text-neon-blue">{exp.period}</p>
-                  <p>{exp.location}</p>
-                </div>
-              </div>
+              {/* Card Container */}
+              <div className="relative group">
+                {/* Hard Shadow */}
+                <div className={`absolute top-4 left-4 w-full h-full border-2 border-black ${exp.color} -z-10 transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2`} />
 
-              {/* Description */}
-              <p className="text-gray-300 mb-6 leading-relaxed text-lg">
-                {exp.description}
-              </p>
-
-              {/* Responsibilities */}
-              <ul className="list-disc list-inside text-gray-400 mb-6 space-y-2">
-                {exp.responsibilities.map((resp, idx) => (
-                  <li key={idx} className="text-sm hover:text-gray-200 transition-colors duration-300">
-                    {resp}
-                  </li>
-                ))}
-              </ul>
-
-              {/* Technologies */}
-              <div className="flex flex-wrap gap-3">
-                {exp.technologies.map((tech, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-center gap-2 px-4 py-2 
-                             rounded-full bg-gray-800/50 text-gray-300 
-                             hover:text-neon-blue hover:bg-gray-800
-                             transition-all duration-300 cursor-pointer
-                             border border-transparent hover:border-neon-blue/30"
-                  >
-                    <tech.icon className="w-4 h-4" />
-                    <span className="text-sm font-medium">{tech.name}</span>
+                <div className="bg-deep-slate border-2 border-black p-8 md:p-10 relative">
+                  {/* Period Badge */}
+                  <div className={`absolute -top-5 right-8 ${exp.color} border-2 border-black px-4 py-2 rotate-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`}>
+                    <span className="font-fira font-bold text-xs text-black uppercase tracking-wider">
+                      {exp.period}
+                    </span>
                   </div>
-                ))}
+
+                  <h4 className="text-3xl md:text-4xl font-oswald font-bold text-soft-white mb-2 uppercase">
+                    {exp.company}
+                  </h4>
+
+                  <div className="flex flex-wrap items-center gap-4 mb-6 text-muted-grey font-fira text-sm">
+                    <span className="text-accent-gold">{exp.role}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
+                    <span>{exp.location}</span>
+                  </div>
+
+                  <p className="text-lg font-inter text-soft-white/90 mb-6 leading-relaxed border-l-2 border-white/20 pl-4">
+                    {exp.description}
+                  </p>
+
+                  <ul className="space-y-3">
+                    {exp.responsibilities.map((resp, idx) => (
+                      <li key={idx} className="flex items-start gap-3 text-sm text-muted-grey font-inter group/item">
+                        <span className={`mt-1.5 w-1.5 h-1.5 ${exp.color.replace('bg-', 'bg-')} shrink-0`} />
+                        <span className="group-hover/item:text-soft-white transition-colors">
+                          {resp}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

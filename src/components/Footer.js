@@ -1,72 +1,82 @@
 import React from 'react';
-import { FaPhone, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+
 import { motion } from 'framer-motion';
 
 const Footer = () => {
+  const socialLinks = [
+    { icon: FaGithub, href: 'https://github.com/azizz7', label: 'GitHub' },
+    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/aziz-barwaniwala-2904a824b/', label: 'LinkedIn' },
+    { icon: FaEnvelope, href: 'mailto:azizbarwani5253@gmail.com', label: 'Email' }
+  ];
+
+  const marqueeVariants = {
+    animate: {
+      x: [0, -1035],
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 20,
+          ease: "linear",
+        },
+      },
+    },
+  };
+
   return (
-    <motion.footer 
-      className="bg-dark-bg text-gray-300 py-6"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center gap-6">
-          {/* Contact Links */}
-          <div className="flex justify-center gap-6 flex-wrap">
-            <motion.a
-              href="tel:+917974205692"
-              className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
-              whileHover={{ scale: 1.1 }}
-              aria-label="Phone"
-            >
-              <FaPhone className="text-2xl" />
-            </motion.a>
-
-            <motion.a
-              href="https://github.com/azizz7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
-              whileHover={{ scale: 1.1 }}
-              aria-label="GitHub"
-            >
-              <FaGithub className="text-2xl" />
-            </motion.a>
-
-            <motion.a
-              href="https://www.linkedin.com/in/aziz-barwaniwala-2904a824b/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
-              whileHover={{ scale: 1.1 }}
-              aria-label="LinkedIn"
-            >
-              <FaLinkedin className="text-2xl" />
-            </motion.a>
-
-            <motion.a
-              href="mailto:azizbarwani5253@gmail.com"
-              className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
-              whileHover={{ scale: 1.1 }}
-              aria-label="Email"
-            >
-              <FaEnvelope className="text-2xl" />
-            </motion.a>
-          </div>
-
-          {/* Copyright Notice */}
-          <motion.p 
-            className="text-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            © {new Date().getFullYear()} Aziz Barwaniwala. All rights reserved.
-          </motion.p>
-        </div>
+    <footer className="bg-bg-primary text-muted-grey border-t border-white/5 relative overflow-hidden">
+      {/* Bright & Loud Marquee */}
+      <div className="w-full overflow-hidden py-8 border-y border-white/10 bg-white/5">
+        <motion.div
+          className="flex whitespace-nowrap gap-16"
+          variants={marqueeVariants}
+          animate="animate"
+        >
+          {[...Array(8)].map((_, i) => (
+            <span key={i} className="text-5xl md:text-7xl font-oswald font-bold text-accent-yellow tracking-widest uppercase">
+              LET'S WORK TOGETHER  •  GET IN TOUCH  •
+            </span>
+          ))}
+        </motion.div>
       </div>
-    </motion.footer>
+
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 flex flex-col md:flex-row justify-between items-center gap-8 py-12">
+
+        {/* Brand */}
+        <div className="text-center md:text-left">
+          <h2 className="text-2xl font-playfair font-bold text-soft-white">
+            Aziz Barwaniwala.
+          </h2>
+          <p className="text-sm font-inter mt-2 text-muted-grey/70">
+            Data Scientist & AI Engineer.
+          </p>
+        </div>
+
+        {/* Social Links */}
+        <div className="flex gap-8">
+          {socialLinks.map((link, index) => (
+            <a
+              key={index}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-grey hover:text-soft-white transition-colors duration-300"
+              aria-label={link.label}
+            >
+              <link.icon className="text-xl" />
+            </a>
+          ))}
+        </div>
+
+        {/* Copyright */}
+        <div className="text-center md:text-right text-xs font-inter text-muted-grey/50">
+          <p>© {new Date().getFullYear()} Aziz Barwaniwala.</p>
+          <p className="mt-1">All Rights Reserved.</p>
+        </div>
+
+      </div>
+    </footer>
   );
 };
 

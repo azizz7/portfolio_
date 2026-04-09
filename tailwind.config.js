@@ -6,27 +6,37 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'dark-bg': '#111827',
-        'dark-surface': '#1F2937',
-        'neon-blue': '#00F3FF',
-        'neon-orange': '#FF7B00',
-        'gray': {
-          300: '#D1D5DB',
-          400: '#9CA3AF',
-          800: '#1F2937',
-          900: '#111827',
-        },
-        'blue': {
-          400: '#60A5FA',
-          500: '#3B82F6',
-        },
-        'orange': {
-          400: '#FB923C',
-        },
+        'rich-charcoal': '#0a0a0a',
+        'deep-slate': '#171717',
+        'soft-white': '#ededed',
+        'muted-grey': '#a1a1aa',
+        'champagne-gold': '#d4af37',
+        'slate-blue': '#64748b',
+        'bg-primary': '#0a0a0a',
+        'text-primary': '#ededed',
+        'cream-bg': '#f0f0f0',
+        'accent-red': '#ff4d4d',
+        'accent-cyan': '#00bcd4',
+        'accent-yellow': '#ffeb3b',
+        'accent-orange': '#ff9800',
       },
       fontFamily: {
-        'orbitron': ['Orbitron', 'sans-serif'],
-        'montserrat': ['Montserrat', 'sans-serif'],
+        'playfair': ['"Playfair Display"', 'serif'],
+        'inter': ['Inter', 'sans-serif'],
+        'fira': ['"Fira Code"', 'monospace'],
+        'oswald': ['Oswald', 'sans-serif'],
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
+      animation: {
+        'marquee': 'marquee 25s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
       },
     },
   },

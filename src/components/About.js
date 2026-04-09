@@ -1,195 +1,93 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import mujDome from '../assets/muj-dome.jpg';
+import AboutImage from '../assets/images/about-photo.jpg';
+import RevealText from './RevealText';
+import RotatingBadge from './RotatingBadge';
+import Sticker from './Sticker';
 
 const About = () => {
-  // Animation variants for the container
-  const containerVariants = {
-    hidden: {
-      opacity: 0,
-      y: 50
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 1,
-        ease: "easeOut",
-        // Stagger children animations
-        delayChildren: 0.2,
-        staggerChildren: 0.3
-      }
-    }
-  };
-
-  // Animation variants for individual elements
-  const itemVariants = {
-    hidden: {
-      opacity: 0,
-      x: -20
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
-  };
-
   return (
-    <section className="min-h-screen bg-dark-bg text-white py-20 px-4" id="about">
-      <motion.div
-        className="max-w-4xl mx-auto"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={containerVariants}
-      >
-        {/* Section header */}
-        <motion.div
-          className="text-center mb-12"
-          variants={itemVariants}
-        >
-          <h2 className="text-3xl md:text-4xl font-orbitron font-bold mb-4">
-            About <span className="text-neon-blue">Me</span>
-          </h2>
-          <div className="w-20 h-1 bg-neon-orange mx-auto rounded-full"></div>
-        </motion.div>
+    <section id="about" className="py-24 bg-bg-primary relative overflow-hidden border-t border-white/10">
+      {/* Grid Background */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none"
+        style={{ backgroundImage: 'linear-gradient(#444 1px, transparent 1px), linear-gradient(90deg, #444 1px, transparent 1px)', backgroundSize: '40px 40px' }}
+      />
 
-        {/* Main content */}
-        <motion.div
-          className="space-y-8"
-          variants={itemVariants}
-        >
-          {/* About text with gradient border */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+
+          {/* Image Column */}
           <motion.div
-            className="bg-dark-surface p-6 rounded-lg border-l-4 border-neon-blue"
-            whileHover={{
-              scale: 1.02,
-              boxShadow: '0 0 20px rgba(0, 243, 255, 0.2)'
-            }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative"
           >
-            <p className="text-lg md:text-xl font-montserrat leading-relaxed text-gray-300">
-              I'm <span className="text-neon-blue font-semibold">Aziz Barwaniwala</span>,
-              a motivated and results-driven IT professional with hands-on experience from three internships, specializing in
-              <span className="text-neon-orange font-semibold"> Artificial Intelligence (AI) and Machine Learning (ML)</span>.
-              I have demonstrated proficiency in deploying and integrating AI solutions into live projects and contributing to strategic research.
-            </p>
+            {/* Floating Badge */}
+            <RotatingBadge text="VISION • STRATEGY • CODE" className="absolute -top-10 -right-10 z-30 bg-black text-accent-cyan shadow-xl" />
+
+            {/* Sticker */}
+            <Sticker text="Hello!" color="bg-accent-yellow" rotate={-15} className="absolute -bottom-6 -left-6 z-30" />
+
+            <div className="aspect-[3/4] relative z-20 border-4 border-black">
+              <img
+                src={AboutImage}
+                alt="About Aziz"
+                className="w-full h-full object-cover transition-all duration-500"
+              />
+            </div>
+            {/* Hard Shadow Offset */}
+            <div className="absolute top-4 left-4 w-full h-full bg-accent-cyan -z-10 border-4 border-black" />
           </motion.div>
 
-          {/* Education section with background image */}
+          {/* Text Column */}
           <motion.div
-            className="relative overflow-hidden rounded-lg"
-            variants={itemVariants}
-            whileHover={{
-              scale: 1.02,
-              boxShadow: '0 0 25px rgba(255, 123, 0, 0.3)'
-            }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-10"
           >
-            {/* Background image with overlay */}
-            <div
-              className="absolute inset-0 bg-cover bg-top transition-transform duration-300 group-hover:scale-110"
-              style={{
-                backgroundImage: `url(${mujDome})`,
-                backgroundPosition: '50% 35%'
-              }}
-            >
-              <motion.div
-                className="absolute inset-0 bg-black bg-opacity-70 backdrop-blur-sm"
-                whileHover={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}
-              ></motion.div>
+            <div>
+              <h2 className="text-accent-yellow font-fira font-bold tracking-widest text-sm uppercase mb-4">
+                <RevealText text="About Me" />
+              </h2>
+              <h3 className="text-6xl md:text-8xl font-oswald font-bold text-soft-white leading-[0.9] uppercase">
+                <span className="block">Driven by</span>
+                <span className="block text-outline-white text-transparent" style={{ WebkitTextStroke: '1px #ededed' }}>Data.</span>
+                <span className="block text-accent-cyan">Inspired</span>
+                <span className="block">by Future.</span>
+              </h3>
             </div>
 
-            {/* Education content */}
-            <motion.div
-              className="relative p-8 z-10"
-              whileHover={{ scale: 1.01 }}
-            >
-              <h3 className="text-2xl font-orbitron font-bold mb-4 text-neon-orange">
-                Education
-              </h3>
-              <div className="space-y-4">
-                <motion.div
-                  className="border-l-2 border-neon-blue pl-4"
-                  whileHover={{ borderColor: 'rgb(255, 123, 0)' }}
-                >
-                  <h4 className="text-xl font-semibold text-white">
-                    B.Tech in Data Science Engineering
-                  </h4>
-                  <p className="text-neon-blue font-montserrat mt-1 transition-colors duration-300">
-                    Manipal University Jaipur
-                  </p>
-                  <p className="text-gray-300 font-montserrat">
-                    Sept 2022 - May 2026
-                  </p>
-                </motion.div>
+            <div className="space-y-6 text-muted-grey font-inter text-lg leading-relaxed max-w-lg border-l-4 border-accent-cyan pl-6">
+              <p>
+                I am a Data Scientist and AI Engineer based in Jaipur. I have completed my B.Tech in Data Science Engineering at <span className="text-soft-white font-bold bg-accent-cyan/10 px-1">Manipal University Jaipur</span>.
+              </p>
+              <p>
+                My passion lies in bridging the gap between theoretical models and real-world impact. Whether it's architecting complex neural networks or optimizing data pipelines, I approach every challenge with a focus on scalability, precision, and user-centric design.
+              </p>
+            </div>
 
-                <motion.div
-                  className="border-l-2 border-neon-blue pl-4"
-                  whileHover={{ borderColor: 'rgb(255, 123, 0)' }}
-                >
-                  <h4 className="text-xl font-semibold text-white">
-                    (10+2, CBSE Board) PCM with Computer Science
-                  </h4>
-                  <p className="text-neon-blue font-montserrat mt-1 transition-colors duration-300">
-                    The Shishukunj International School
-                  </p>
-                  <p className="text-gray-300 font-montserrat">
-                    Completed in 2022 | Percentage: 75%
-                  </p>
-                </motion.div>
+            {/* Stats / Info */}
+            <div className="grid grid-cols-2 gap-8 pt-4">
+              <div className="bg-deep-slate p-6 border-l-4 border-accent-yellow">
+                <h4 className="text-soft-white font-oswald text-2xl mb-1">Education</h4>
+                <p className="text-muted-grey font-fira text-xs">B.Tech Data Science</p>
+                <p className="text-accent-yellow font-bold text-xs mt-2">2022 - 2026</p>
               </div>
-            </motion.div>
+              <div className="bg-deep-slate p-6 border-l-4 border-accent-cyan">
+                <h4 className="text-soft-white font-oswald text-2xl mb-1">Expertise</h4>
+                <p className="text-muted-grey font-fira text-xs">Machine Learning, MERN, AI</p>
+                <p className="text-accent-cyan font-bold text-xs mt-2">Full Stack</p>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Additional details with hover effects */}
-          <motion.div
-            className="grid md:grid-cols-2 gap-6 mt-8"
-            variants={itemVariants}
-          >
-            <motion.div
-              className="bg-dark-surface p-6 rounded-lg"
-              whileHover={{
-                scale: 1.05,
-                boxShadow: '0 0 15px rgba(255, 123, 0, 0.2)'
-              }}
-              transition={{ duration: 0.3 }}
-            >
-              <h3 className="text-xl font-orbitron font-bold mb-3 text-neon-orange">
-                Current Focus
-              </h3>
-              <p className="text-gray-300">
-                Data Science & Engineering
-                <br />
-                Full Stack Development
-              </p>
-            </motion.div>
-
-            <motion.div
-              className="bg-dark-surface p-6 rounded-lg"
-              whileHover={{
-                scale: 1.05,
-                boxShadow: '0 0 15px rgba(0, 243, 255, 0.2)'
-              }}
-              transition={{ duration: 0.3 }}
-            >
-              <h3 className="text-xl font-orbitron font-bold mb-3 text-neon-blue">
-                Vision
-              </h3>
-              <p className="text-gray-300">
-                Innovating through technology
-                <br />
-                Building impactful solutions
-              </p>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      </motion.div>
-    </section>
+        </div>
+      </div >
+    </section >
   );
 };
 
