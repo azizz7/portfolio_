@@ -7,20 +7,20 @@ import RevealText from './RevealText';
 const Projects = () => {
   const projects = [
     {
+      title: 'DocuMind',
+      category: 'RAG Document Assistant',
+      description: 'Full-stack RAG application to chat with PDF documents using AI. Features streaming responses, source citations, conversation memory, multi-document support, and scoped retrieval — built with a production-grade architecture.',
+      technologies: ['Python', 'FastAPI', 'React', 'LangChain', 'ChromaDB', 'Groq'],
+      link: 'https://github.com/azizz7/documind',
+      color: 'bg-accent-purple'
+    },
+    {
       title: 'Ad Engine',
       category: 'Analytics Platform',
       description: 'AI-powered analytics platform generating actionable insights and performance predictions for digital advertising campaigns.',
       technologies: ['Next.js', 'FastAPI', 'Python', 'ML'],
       link: 'https://github.com/azizz7/ad-engine',
       color: 'bg-accent-cyan'
-    },
-    {
-      title: 'AI Journal',
-      category: 'Mobile Application',
-      description: 'Architected a robust mobile journaling app with offline-first synchronization, OpenAI integration, and conflict resolution.',
-      technologies: ['React Native', 'TypeScript', 'Supabase', 'OpenAI'],
-      link: null,
-      color: 'bg-accent-yellow'
     },
     {
       title: 'Spam Detector',
@@ -31,6 +31,14 @@ const Projects = () => {
       color: 'bg-accent-orange'
     },
     {
+      title: 'AI Journal',
+      category: 'Mobile Application',
+      description: 'Architected a robust mobile journaling app with offline-first synchronization, OpenAI integration, and conflict resolution.',
+      technologies: ['React Native', 'TypeScript', 'Supabase', 'OpenAI'],
+      link: null,
+      color: 'bg-accent-yellow'
+    },
+    {
       title: 'Data Automator',
       category: 'Workflow Automation',
       description: 'Automated complex data processing workflows for logistics, reducing manual effort by 75% and ensuring data consistency.',
@@ -39,6 +47,9 @@ const Projects = () => {
       color: 'bg-accent-red'
     }
   ];
+
+  const gridProjects = projects.slice(0, 4);
+  const lastProject = projects[4];
 
   return (
     <section id="projects" className="py-32 bg-bg-primary relative overflow-hidden">
@@ -62,9 +73,9 @@ const Projects = () => {
           </div>
         </div>
 
-        {/* Project Grid */}
+        {/* Project Grid — first 4 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
-          {projects.map((project, index) => (
+          {gridProjects.map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
@@ -126,6 +137,63 @@ const Projects = () => {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* Last project — centered */}
+        <div className="flex justify-center mt-20">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="group relative w-full max-w-xl"
+          >
+            <div className={`absolute top-4 left-4 w-full h-full border-2 border-black ${lastProject.color} -z-10 transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2`} />
+
+            <div className="bg-deep-slate border-2 border-black p-0 h-full flex flex-col">
+              <div className="aspect-video w-full border-b-2 border-black overflow-hidden relative">
+                <img
+                  src={ProjectPlaceholder}
+                  alt={lastProject.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className={`absolute inset-0 ${lastProject.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none`} />
+                <div className="absolute top-4 right-4 bg-black text-white px-3 py-1 font-fira text-xs font-bold border border-white">
+                  {lastProject.category}
+                </div>
+              </div>
+
+              <div className="p-8 flex flex-col flex-grow">
+                <div className="flex justify-between items-start mb-4">
+                  <h4 className="text-4xl font-oswald font-bold text-soft-white uppercase leading-none">
+                    {lastProject.title}
+                  </h4>
+                  {lastProject.link && (
+                    <a
+                      href={lastProject.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-grey hover:text-white transition-colors p-2 border border-transparent hover:border-white rounded-full"
+                    >
+                      <FiGithub size={24} />
+                    </a>
+                  )}
+                </div>
+
+                <p className="text-muted-grey font-inter mb-6 leading-relaxed flex-grow">
+                  {lastProject.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 pt-4 border-t-2 border-black/20">
+                  {lastProject.technologies.map((tech, i) => (
+                    <span key={i} className="text-xs font-fira font-bold text-black bg-white px-2 py-1 border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
         <div className="md:hidden mt-12 text-center">

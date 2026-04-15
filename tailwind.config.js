@@ -19,6 +19,8 @@ module.exports = {
         'accent-cyan': '#00bcd4',
         'accent-yellow': '#ffeb3b',
         'accent-orange': '#ff9800',
+        'accent-purple': '#a855f7',
+        'accent-gold': '#f59e0b',
       },
       fontFamily: {
         'playfair': ['"Playfair Display"', 'serif'],
