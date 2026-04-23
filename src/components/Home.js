@@ -84,10 +84,10 @@ const Home = () => {
       </div>
 
       {/* Marquee Footer */}
-      <div className="absolute bottom-0 left-0 w-full bg-accent-yellow overflow-hidden py-3 border-t-4 border-black z-30 transform rotate-1 scale-105 origin-bottom-left pointer-events-none">
+      <div className="absolute bottom-0 left-0 w-full bg-accent-yellow overflow-hidden py-3 border-t-4 border-black z-30 pointer-events-none">
         <div className="animate-marquee whitespace-nowrap flex gap-8 items-center">
-          {[...Array(10)].map((_, i) => (
-            <span key={i} className="text-black font-oswald font-bold text-2xl uppercase tracking-widest flex items-center gap-4">
+          {[...Array(20)].map((_, i) => (
+            <span key={i} className="text-black font-oswald font-bold text-2xl uppercase tracking-widest flex items-center gap-4 flex-shrink-0">
               Open for work <span className="w-3 h-3 bg-black rounded-full inline-block" />
             </span>
           ))}
