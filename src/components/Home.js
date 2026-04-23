@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { NavHashLink } from 'react-router-hash-link';
 import { FiArrowRight } from 'react-icons/fi';
-import HeroImage from '../assets/images/IMG_1559.png';
+import HeroImage from '../assets/images/Aziz_Professional_Photograph.png';
 import MagneticButton from './MagneticButton';
 import RevealText from './RevealText';
 import Sticker from './Sticker';
